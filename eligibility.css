@@ -1,0 +1,571 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+  --green-dark: #1d6f3a;
+  --green: #19753f;
+  --green-light: #e6ffe6;
+  --yellow: #ffe600;
+  --yellow-dark: #f0d400;
+  --text-muted: #5a5a5a;
+  --border: #d8ead9;
+  --error: #c62828;
+}
+
+html, body {
+  height: 100%;
+}
+.bottom-wave{
+    position:fixed;
+    left:0;
+    bottom:0;
+    width:100%;
+    height:220px;
+    z-index:0;
+    overflow:hidden;
+    pointer-events:none;
+}
+
+.bottom-wave svg{
+    width:100%;
+    height:100%;
+    display:block;
+}
+
+.page{
+    position:relative;
+    z-index:5;
+}
+
+body{
+    background:#eefee8;
+    overflow-x:hidden;
+}
+
+body {
+  background: var(--green-light);
+  min-height: 100vh;
+  padding: 24px 16px 48px;
+  position: relative;
+}
+
+/* Decorative corner curve.
+   Fixed to the viewport (not the document) and sized as a
+   percentage of the viewport so it never overwhelms small
+   screens, however tall the page content grows. */
+.corner-shape {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: clamp(90px, 22vw, 220px);
+  height: clamp(90px, 22vw, 220px);
+  background: var(--green-dark);
+  border-radius: 50%;
+  transform: translate(35%, 35%);
+  opacity: 0.9;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 460px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* For steps with many bubble options let the card grow wider
+   so options can flow across the row like the reference design. */
+.page:has(#step-4.active),
+.page:has(#step-5c.active) {
+  max-width: 900px;
+}
+
+/* Logo */
+
+.logo-wrap {
+  margin-bottom: 28px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+.logo-icon {
+  color: var(--green-dark);
+  font-size: 28px;
+  transform: rotate(-15deg);
+}
+
+.logo-text {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--green-dark);
+  line-height: 1.1;
+}
+
+.logo-text span {
+  font-weight: 400;
+  font-size: 20px;
+  color: var(--green);
+}
+
+/* Card */
+
+.card {
+  width: 100%;
+  background: #fff;
+  border-radius: 18px;
+  padding: 36px 32px;
+  box-shadow: 0 10px 30px rgba(29, 111, 58, 0.12);
+}
+
+.step {
+  display: none;
+}
+
+.step.active {
+  display: block;
+  animation: fadeIn .35s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.secure-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #7a8a7a;
+  font-size: 14px;
+  margin-bottom: 22px;
+}
+
+.secure-icon {
+  color: var(--green);
+  font-size: 14px;
+}
+
+.step-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--green-dark);
+  margin-bottom: 22px;
+  line-height: 1.3;
+}
+
+.field-label {
+  display: block;
+  font-size: 15px;
+  color: var(--green);
+  margin-bottom: 8px;
+}
+
+.field-input {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 16px;
+  border: 1.5px solid var(--yellow-dark);
+  border-radius: 8px;
+  outline: none;
+  color: #222;
+  background: #fff;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.field-input:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(25, 117, 63, 0.15);
+}
+
+.field-input.invalid {
+  border-color: var(--error);
+}
+
+.field-error {
+  display: none;
+  color: var(--error);
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+.field-error.show {
+  display: block;
+}
+
+.reassurance {
+  margin-top: 24px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* Buttons */
+
+.next-btn {
+  margin-top: 24px;
+  width: 100%;
+  padding: 15px 20px;
+  background: var(--yellow);
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #2b2b00;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background .2s, transform .15s, opacity .2s;
+}
+
+.next-btn:hover {
+  background: var(--yellow-dark);
+}
+
+.next-btn:active {
+  transform: scale(0.98);
+}
+
+.next-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-row {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.next-btn.compact {
+  margin-top: 0;
+  width: auto;
+  flex: 1;
+  padding: 14px 18px;
+}
+
+.prev-btn {
+  flex: 1;
+  padding: 14px 18px;
+  background: transparent;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--green);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background .2s, border-color .2s;
+}
+
+.prev-btn:hover {
+  background: var(--green-light);
+  border-color: var(--green);
+}
+
+/* Radio group (single-select) */
+
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 28px;
+  margin-top: 4px;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.radio-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.radio-dot {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border-radius: 50%;
+  border: 1.5px solid #9db89d;
+  position: relative;
+  transition: border-color .2s;
+}
+
+.radio-dot::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--green-dark);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform .15s ease;
+}
+
+.radio-option input[type="radio"]:checked + .radio-dot {
+  border-color: var(--green-dark);
+}
+
+.radio-option input[type="radio"]:checked + .radio-dot::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.radio-option input[type="radio"]:focus-visible + .radio-dot {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+
+.radio-label {
+  font-size: 15px;
+  color: #333;
+}
+
+@media (max-width: 480px) {
+  .radio-group {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+/* Info / explainer text blocks (e.g. gas supply Yes/No meaning) */
+
+.info-block {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin-top: 18px;
+}
+
+.info-block strong {
+  color: var(--green-dark);
+}
+
+/* Checkbox group (multi-select) - e.g. "home improvements" step.
+   Same visual language as radio-group but square boxes + check mark,
+   and the user can tap/touch as many bubbles as they like. */
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 28px;
+  margin-top: 4px;
+}
+
+.checkbox-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-option input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkbox-box {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border-radius: 5px;
+  border: 1.5px solid #9db89d;
+  position: relative;
+  transition: border-color .2s, background .2s;
+  background: #fff;
+}
+
+.checkbox-box::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) scale(0);
+  transition: transform .15s ease;
+}
+
+.checkbox-option input[type="checkbox"]:checked + .checkbox-box {
+  border-color: var(--green-dark);
+  background: var(--green-dark);
+}
+
+.checkbox-option input[type="checkbox"]:checked + .checkbox-box::after {
+  transform: rotate(45deg) scale(1);
+}
+
+.checkbox-option input[type="checkbox"]:focus-visible + .checkbox-box {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+
+.checkbox-option:hover .checkbox-box {
+  border-color: var(--green);
+}
+
+.checkbox-label {
+  font-size: 15px;
+  color: #333;
+}
+
+@media (max-width: 480px) {
+  .checkbox-group {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+/* Autocomplete address dropdown */
+
+.autocomplete {
+  position: relative;
+}
+
+.suggestions {
+  list-style: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  max-height: 220px;
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  z-index: 5;
+  display: none;
+}
+
+.suggestions.show {
+  display: block;
+}
+
+.suggestions li {
+  padding: 12px 16px;
+  font-size: 15px;
+  color: var(--green);
+  cursor: pointer;
+  border-bottom: 1px solid #f0f4f0;
+}
+
+.suggestions li:last-child {
+  border-bottom: none;
+}
+
+.suggestions li:hover,
+.suggestions li.highlighted {
+  background: var(--green-light);
+}
+
+.suggestions .no-results {
+  color: var(--text-muted);
+  cursor: default;
+}
+
+.suggestions .no-results:hover {
+  background: transparent;
+}
+
+.footnote {
+  position: relative;
+  z-index: 1;
+  margin-top: 22px;
+  font-size: 13px;
+  color: #4a6b4a;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  max-width: 460px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  .step.active {
+    animation: none;
+  }
+}
+
+/* Responsive: small phones */
+@media (max-width: 480px) {
+  .card {
+    padding: 28px 22px;
+    border-radius: 14px;
+  }
+
+  .step-title {
+    font-size: 19px;
+  }
+
+  .logo-text {
+    font-size: 22px;
+  }
+
+  .logo-text span {
+    font-size: 17px;
+  }
+
+  .btn-row {
+    flex-direction: column-reverse;
+  }
+
+  .prev-btn,
+  .next-btn.compact {
+    width: 100%;
+  }
+}
+
+/* Larger desktop breathing room */
+@media (min-width: 1200px) {
+  .page {
+    max-width: 500px;
+  }
+
+  .page:has(#step-4.active),
+  .page:has(#step-5c.active) {
+    max-width: 900px;
+  }
+
+  .card {
+    padding: 44px 40px;
+  }
+}
+
+
+

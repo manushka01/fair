@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Check Your Eligibility | Fairway Energy</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<link rel="stylesheet" href="eligibility.css">
+</head>
+<div class="bottom-wave">
+    <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path fill="#41964A"
+            d="M0,250
+               C350,250 650,250 900,250
+               C1100,250 1250,280 1360,320
+               C1410,340 1440,360 1440,360
+               L1440,320
+               L0,320
+               Z">
+        </path>
+    </svg>
+</div>
+<body>
+
+<div class="corner-shape"></div>
+
+<div class="page">
+
+  <div class="logo-wrap">
+    <div class="logo">
+      <span class="logo-icon"><i class="fa-solid fa-leaf"></i></span>
+      <span class="logo-text">Fairway<br><span>Energy</span></span>
+    </div>
+  </div>
+
+  <div class="card" id="card">
+
+    <!-- Step 1: Postcode -->
+    <div class="step active" id="step-1" data-step="1">
+
+      <div class="secure-row">
+        <i class="fa-solid fa-lock secure-icon"></i>
+        <span>Secure form</span>
+      </div>
+
+      <h1 class="step-title">Enter your postcode to start</h1>
+
+      <label class="field-label" for="postcode">Your postcode</label>
+      <input
+        type="text"
+        id="postcode"
+        class="field-input"
+        placeholder="e.g. L1 8JQ"
+        autocomplete="postal-code"
+        inputmode="text"
+      >
+      <p class="field-error" id="postcode-error">Please enter a valid UK postcode.</p>
+
+      <p class="reassurance">
+        Takes 30 seconds &bull; No obligation &bull; Secure &amp; private
+      </p>
+
+      <button type="button" class="next-btn" id="postcode-next">
+        Next
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+
+    </div>
+
+    <!-- Step 2a: Address found - pick from list -->
+    <div class="step" id="step-2a" data-step="2a">
+
+      <h1 class="step-title">Select your address</h1>
+
+      <label class="field-label" for="address-search">Your address</label>
+
+      <div class="autocomplete">
+        <input
+          type="text"
+          id="address-search"
+          class="field-input"
+          placeholder="Start typing your address"
+          autocomplete="off"
+          role="combobox"
+          aria-expanded="false"
+          aria-controls="address-listbox"
+          aria-autocomplete="list"
+        >
+        <ul class="suggestions" id="address-listbox" role="listbox"></ul>
+      </div>
+      <p class="field-error" id="address-error">Please select an address from the list.</p>
+
+      <div class="btn-row">
+        <button type="button" class="prev-btn" data-back>
+          <i class="fa-solid fa-arrow-left"></i>
+          Previous
+        </button>
+        <button type="button" class="next-btn compact" id="address-next" disabled>
+          Next
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Step 2b: Address not found - manual entry -->
+    <div class="step" id="step-2b" data-step="2b">
+
+      <h1 class="step-title">Simply enter your house name/number and street</h1>
+
+      <label class="field-label" for="manual-address">Your house name/number and street</label>
+      <input
+        type="text"
+        id="manual-address"
+        class="field-input"
+        placeholder="Enter your house name/number and street"
+        autocomplete="address-line1"
+      >
+      <p class="field-error" id="manual-error">Please enter your house name/number and street.</p>
+
+      <div class="btn-row">
+        <button type="button" class="prev-btn" data-back>
+          <i class="fa-solid fa-arrow-left"></i>
+          Previous
+        </button>
+        <button type="button" class="next-btn compact" id="manual-next">
+          Next
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Step 3: Property type -->
+    <div class="step" id="step-3" data-step="3">
+
+      <h1 class="step-title">Please confirm the type of property that you live in?</h1>
+
+      <div class="radio-group" id="property-type-group" role="radiogroup" aria-label="Property type">
+        <label class="radio-option">
+          <input type="radio" name="property-type" value="Detached House">
+          <span class="radio-dot"></span>
+          <span class="radio-label">Detached House</span>
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="property-type" value="Semi-Detached House">
+          <span class="radio-dot"></span>
+          <span class="radio-label">Semi-Detached House</span>
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="property-type" value="Terraced House">
+          <span class="radio-dot"></span>
+          <span class="radio-label">Terraced House</span>
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="property-type" value="Bungalow">
+          <span class="radio-dot"></span>
+          <span class="radio-label">Bungalow</span>
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="property-type" value="Cottage">
+          <span class="radio-dot"></span>
+          <span class="radio-label">Cottage</span>
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="property-type" value="Flat/Apartment">
+          <span class="radio-dot"></span>
+          <span class="radio-label">Flat/Apartment</span>
+        </label>
+      </div>
+
+      <div class="btn-row">
+        <button type="button" class="prev-btn" data-back>
+          <i class="fa-solid fa-arrow-left"></i>
+          Previous
+        </button>
+        <button type="button" class="next-btn compact" id="property-type-next" disabled>
+          Next
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Step 4: Home improvements (multi-select checkboxes) -->
+    <div class="step" id="step-4" data-step="4">
+
+      <h1 class="step-title">Has there been any of the following improvements to your home?</h1>
+
+      <div class="checkbox-group" id="improvements-group" role="group" aria-label="Home improvements">
+        <label class="checkbox-option">
+          <input type="checkbox" name="improvements" value="No improvements" id="improvement-none">
+          <span class="checkbox-box"></span>
+          <span class="checkbox-label">No improvements</span>
+        </label>
+        <label class="checkbox-option">
+          <input type="checkbox" name="improvements" value="Not sure" id="improvement-not-sure">
+          <span class="checkbox-box"></span>
+          <span class="checkbox-label">Not sure</span>
+        </label>
+        <label class="checkbox-option">
+          <input type="checkbox" name="improvements" value="Loft Insulation">
+          <span class="checkbox-box"></span>
+          <span class="checkbox-label">Loft Insulation</span>
+        </label>
+        <label class="checkbox-option">
+          <input type="checkbox" name="improvements" value="Cavity Wall Insulation">
+          <span class="checkbox-box"></span>
+          <span class="checkbox-label">Cavity Wall Insulation</span>
+        </label>
+        <label class="checkbox-option">
+          <input type="checkbox" name="improvements" value="Solid Wall Insulation">
+          <span class="checkbox-box"></span>
+          <span class="checkbox-label">Solid Wall Insulation</span>
+        </label>
+        <label class="checkbox-option">
+          <input type="checkbox" name="improvements" value="Floor Insulation">
+          <span class="checkbox-box"></span>
+          <span class="checkbox-label">Floor Insulation</span>
+        </label>
+        <label class="checkbox-option">
+          <input type="checkbox" name="improvements" value="Roof Insulation">
+          <span class="checkbox-box"></span>
+          <span class="checkbox-label">Roof Insulation</span>
+        </label>
+        <label class="checkbox-option">
+          <input type="checkbox" name="improvements" value="Double Glazing">
+          <span class="checkbox-box"></span>
+          <span class="checkbox-label">Double Glazing</span>
+        </label>
+        <label class="checkbox-option">
+          <input type="checkbox" name="improvements" value="Triple Glazing">
+          <span class="checkbox-box"></span>
+          <span class="checkbox-label">Triple Glazing</span>
+        </label>
+        <label class="checkbox-option">
+          <input type="checkbox" name="improvements" value="Draught Proofing">
+          <span class="checkbox-box"></span>
+          <span class="checkbox-label">Draught Proofing</span>
+        </label>
+        <label class="checkbox-option">
+          <input type="checkbox" name="improvements" value="Boiler Upgrade">
+          <span class="checkbox-box"></span>
+          <span class="checkbox-label">Boiler Upgrade</span>
+        </label>
+        <label class="checkbox-option">
+          <input type="checkbox" name="improvements" value="Heating Controls">
+          <span class="checkbox-box"></span>
+          <span class="checkbox-label">Heating Controls</span>
+        </label>
+        <label class="checkbox-option">
+          <input type="checkbox" name="improvements" value="Heat Pumps">
+          <span class="checkbox-box"></span>
+          <span class="checkbox-label">Heat Pumps</span>
+        </label>
+        <label class="checkbox-option">
+          <input type="checkbox" name="improvements" value="Hot Water Cylinder Insulation">
+          <span class="checkbox-box"></span>
+          <span class="checkbox-label">Hot Water Cylinder Insulation</span>
+        </label>
+        <label class="checkbox-option">
+          <input type="checkbox" name="improvements" value="Solar Panels">
+          <span class="checkbox-box"></span>
+          <span class="checkbox-label">Solar Panels</span>
+        </label>
+        <label class="checkbox-option">
+          <input type="checkbox" name="improvements" value="Solar Water Heating">
+          <span class="checkbox-box"></span>
+          <span class="checkbox-label">Solar Water Heating</span>
+        </label>
+        <label class="checkbox-option">
+          <input type="checkbox" name="improvements" value="Biomass Boilers">
+          <span class="checkbox-box"></span>
+          <span class="checkbox-label">Biomass Boilers</span>
+        </label>
+        <label class="checkbox-option">
+          <input type="checkbox" name="improvements" value="Energy-efficient Ventilation Systems">
+          <span class="checkbox-box"></span>
+          <span class="checkbox-label">Energy-efficient Ventilation Systems</span>
+        </label>
+        <label class="checkbox-option">
+          <input type="checkbox" name="improvements" value="Air Tightness">
+          <span class="checkbox-box"></span>
+          <span class="checkbox-label">Air Tightness</span>
+        </label>
+        <label class="checkbox-option">
+          <input type="checkbox" name="improvements" value="Thermal Bridging">
+          <span class="checkbox-box"></span>
+          <span class="checkbox-label">Thermal Bridging</span>
+        </label>
+      </div>
+
+      <p class="field-error" id="improvements-error">Please select at least one option.</p>
+
+      <div class="btn-row">
+        <button type="button" class="prev-btn" data-back>
+          <i class="fa-solid fa-arrow-left"></i>
+          Previous
+        </button>
+        <button type="button" class="next-btn compact" id="improvements-next" disabled>
+          Next
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Step 5: Homeowner or renter (bug-fixed: unique ids/name, div closed) -->
+    <div class="step" id="step-5" data-step="5">
+
+      <h1 class="step-title">Are you a homeowner or renter?</h1>
+
+      <div class="radio-group" id="occupancy-group" role="radiogroup" aria-label="Homeowner or renter">
+        <label class="radio-option">
+          <input type="radio" name="occupancy" value="Homeowner">
+          <span class="radio-dot"></span>
+          <span class="radio-label">Homeowner</span>
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="occupancy" value="Private Renter">
+          <span class="radio-dot"></span>
+          <span class="radio-label">Private Renter</span>
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="occupancy" value="Social Housing">
+          <span class="radio-dot"></span>
+          <span class="radio-label">Social Housing (Council or housing association)</span>
+        </label>
+      </div>
+
+      <div class="btn-row">
+        <button type="button" class="prev-btn" data-back>
+          <i class="fa-solid fa-arrow-left"></i>
+          Previous
+        </button>
+        <button type="button" class="next-btn compact" id="occupancy-next" disabled>
+          Next
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Step 5b: Gas supply (NEW - added after Homeowner/Renter) -->
+    <div class="step" id="step-5b" data-step="5b">
+
+      <h1 class="step-title">Does your property have a gas supply?</h1>
+
+      <div class="radio-group" id="gas-group" role="radiogroup" aria-label="Gas supply">
+        <label class="radio-option">
+          <input type="radio" name="gas-supply" value="Yes">
+          <span class="radio-dot"></span>
+          <span class="radio-label">Yes</span>
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="gas-supply" value="No">
+          <span class="radio-dot"></span>
+          <span class="radio-label">No</span>
+        </label>
+      </div>
+
+      <p class="info-block">
+        Yes = On-gas (connected to mains gas)<br>
+        No = Off-gas (not connected to mains gas)
+      </p>
+
+      <p class="info-block">
+        Please select <strong>Yes</strong> if the property is connected to the mains gas network (&ldquo;on-gas&rdquo;). Examples include properties with a gas boiler, gas central heating, gas hob/cooker, or gas fire. Even if the gas supply is not currently being used, the property is still classed as &ldquo;on-gas&rdquo; if a mains gas connection is present.<br>
+        Select <strong>No</strong> if the property is not connected to mains gas (&ldquo;off-gas&rdquo;) and instead uses electricity, oil, LPG, solid fuel, or another alternative fuel source.
+      </p>
+
+      <div class="btn-row">
+        <button type="button" class="prev-btn" data-back>
+          <i class="fa-solid fa-arrow-left"></i>
+          Previous
+        </button>
+        <button type="button" class="next-btn compact" id="gas-next" disabled>
+          Next
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Step 5c: Benefits (NEW - bubble/radio options instead of a dropdown) -->
+    <div class="step" id="step-5c" data-step="5c">
+
+      <h1 class="step-title">Do you or someone in your household receive one of the following benefits?</h1>
+
+      <div class="radio-group" id="benefits-group" role="radiogroup" aria-label="Household benefits">
+        <label class="radio-option">
+          <input type="radio" name="benefits" value="Income-based Jobseeker's Allowance (JSA)">
+          <span class="radio-dot"></span>
+          <span class="radio-label">Income-based Jobseeker&rsquo;s Allowance (JSA)</span>
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="benefits" value="Income-related Employment and Support Allowance (ESA)">
+          <span class="radio-dot"></span>
+          <span class="radio-label">Income-related Employment and Support Allowance (ESA)</span>
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="benefits" value="Income Support (IS)">
+          <span class="radio-dot"></span>
+          <span class="radio-label">Income Support (IS)</span>
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="benefits" value="Pension Credit Guarantee Credit">
+          <span class="radio-dot"></span>
+          <span class="radio-label">Pension Credit Guarantee Credit</span>
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="benefits" value="Pension Credit Savings Credit">
+          <span class="radio-dot"></span>
+          <span class="radio-label">Pension Credit Savings Credit</span>
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="benefits" value="Working Tax Credit (WTC)">
+          <span class="radio-dot"></span>
+          <span class="radio-label">Working Tax Credit (WTC)</span>
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="benefits" value="Child Tax Credit (CTC)">
+          <span class="radio-dot"></span>
+          <span class="radio-label">Child Tax Credit (CTC)</span>
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="benefits" value="Universal Credit (UC)">
+          <span class="radio-dot"></span>
+          <span class="radio-label">Universal Credit (UC)</span>
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="benefits" value="Housing Benefit">
+          <span class="radio-dot"></span>
+          <span class="radio-label">Housing Benefit</span>
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="benefits" value="Child Benefit">
+          <span class="radio-dot"></span>
+          <span class="radio-label">Child Benefit</span>
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="benefits" value="None">
+          <span class="radio-dot"></span>
+          <span class="radio-label">None</span>
+        </label>
+      </div>
+
+      <div class="btn-row">
+        <button type="button" class="prev-btn" data-back>
+          <i class="fa-solid fa-arrow-left"></i>
+          Previous
+        </button>
+        <button type="button" class="next-btn compact" id="benefits-next" disabled>
+          Next
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+
+    </div>
+
+
+
+<div class="step" id="step-6" data-step="6">
+
+    <h1 class="step-title">How many debts have you?</h1>
+
+    <div class="radio-group" role="radiogroup">
+
+        <label class="radio-option">
+            <input type="radio" name="debt" value="0-2000">
+            <span class="radio-dot"></span>
+            <span class="radio-label">£0 - £2,000</span>
+        </label>
+
+        <label class="radio-option">
+            <input type="radio" name="debt" value="2001-4000">
+            <span class="radio-dot"></span>
+            <span class="radio-label">£2,001 - £4,000</span>
+        </label>
+
+        <label class="radio-option">
+            <input type="radio" name="debt" value="4001-6000">
+            <span class="radio-dot"></span>
+            <span class="radio-label">£4,001 - £6,000</span>
+        </label>
+
+        <label class="radio-option">
+            <input type="radio" name="debt" value="6000+">
+            <span class="radio-dot"></span>
+            <span class="radio-label">£6,000+</span>
+        </label>
+
+    </div>
+
+    <div class="btn-row">
+
+        <button type="button" class="prev-btn" data-back>
+            <i class="fa-solid fa-arrow-left"></i>
+            Previous
+        </button>
+
+        <button
+            type="button"
+            class="next-btn compact"
+            id="debt-next"
+            disabled>
+
+            Next
+            <i class="fa-solid fa-arrow-right"></i>
+
+        </button>
+
+    </div>
+
+</div>
+   
+
+
+
+
+<div class="step" id="step-7" data-step="7">
+
+    <h1 class="step-title">Your Contact Details</h1>
+
+    <label class="field-label">Title</label>
+
+    <select id="title" class="field-input">
+        <option value="">Please choose</option>
+        <option>Mr</option>
+        <option>Mrs</option>
+        <option>Miss</option>
+        <option>Ms</option>
+        <option>Dr</option>
+    </select>
+
+    <label class="field-label">First Name</label>
+    <input type="text" id="firstname" class="field-input">
+
+    <label class="field-label">Last Name</label>
+    <input type="text" id="lastname" class="field-input">
+
+    <label class="field-label">Phone Number</label>
+    <input type="tel" id="phone" class="field-input">
+
+    <label class="field-label">Email Address</label>
+    <input type="email" id="email" class="field-input">
+
+    <div class="btn-row">
+
+        <button type="button" class="prev-btn" data-back>
+            <i class="fa-solid fa-arrow-left"></i>
+            Previous
+        </button>
+
+        <button
+            type="button"
+            class="next-btn compact"
+            id="contact-next"
+            disabled>
+
+            Submit
+            <i class="fa-solid fa-arrow-right"></i>
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- Step 9 -->
+<div class="step" id="step-9" data-step="9">
+
+    <h1 class="step-title">When's best to call you?</h1>
+
+    <p class="info-block">
+        We cannot guarantee a specific time or date to contact you.
+        However, we will do our very best to call you at a time or day
+        that is convenient for you.
+        <br><br>
+        <strong>Our opening times are: Mon-Fri 9am-5pm.</strong>
+    </p>
+
+    <label class="field-label" for="call-time">
+        When's best to call you?
+    </label>
+
+    <input
+        type="text"
+        id="call-time"
+        class="field-input"
+        placeholder="e.g. 2pm or Tomorrow Morning"
+    >
+
+    <p class="info-block" style="margin-top:30px;">
+        If you are eligible for the ECO4 grant and once your install is
+        complete, you will receive a free energy-saving gift pack or a
+        £100 cash award, as a thank you from us for choosing Fairway Energy.
+    </p>
+
+    <p class="info-block">
+        Terms Apply.
+    </p>
+
+    <label class="field-label" for="gift">
+        Which gift would you prefer?
+    </label>
+
+    <select id="gift" class="field-input">
+        <option value="">None</option>
+        <option value="cash">£100 cash award paid into my bank</option>
+        <option value="gift-pack">
+            Free energy-saving appliances gift pack (kettle & toaster)
+        </option>
+    </select>
+
+    <label class="checkbox-option" style="margin-top:25px;">
+        <input type="checkbox" id="privacy-check">
+        <span class="checkbox-box"></span>
+        <span class="checkbox-label">
+            By ticking this box, you agree to the storage and processing
+            of your personal data provided in this form in accordance
+            with our Privacy Policy.
+        </span>
+    </label>
+
+    <div class="btn-row">
+
+        <button type="button" class="prev-btn" data-back>
+            <i class="fa-solid fa-arrow-left"></i>
+            Previous
+        </button>
+
+        <button
+            type="button"
+            class="next-btn compact"
+            id="submit-btn"
+            disabled>
+
+            SUBMIT NOW
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+
+
+    <!-- Step 6 placeholder -->
+    <div class="step" id="step-1o" data-step="10">
+      <p class="step-title" style="font-size:20px;">Step 9 goes here…</p>
+      <div class="btn-row">
+        <button type="button" class="prev-btn" data-back>
+          <i class="fa-solid fa-arrow-left"></i>
+          Previous
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="footnote">
+    <i class="fa-solid fa-shield-halved"></i>
+    Your information is encrypted and never shared without consent.
+  </p>
+
+</div>
+
+<script src="eligibility.js"></script>
+</body>
+</html>
