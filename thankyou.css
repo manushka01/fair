@@ -1,0 +1,146 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#eafce5;
+}
+
+/* Hero */
+
+.hero{
+    background:linear-gradient(to bottom,#ecffe7,#e3fadf);
+    height:340px;
+    border-bottom-right-radius:180px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.thank-title{
+    font-size:50px;
+    color:#176b39;
+    font-weight:700;
+}
+
+/* Content */
+
+.content{
+    background:#2f8648;
+    color:#fff;
+    text-align:center;
+    padding:60px 20px;
+}
+
+.content h2{
+    max-width:900px;
+    margin:auto;
+
+    font-size:32px;
+    line-height:1.6;
+    font-weight:600;
+}
+
+.msg{
+    margin-top:45px;
+    font-size:22px;
+}
+
+.thanks{
+    margin-top:45px;
+    font-size:22px;
+}
+
+.team{
+    margin-top:20px;
+    font-size:36px;
+    font-weight:bold;
+}
+
+.home-btn{
+    margin-top:55px;
+
+    padding:16px 42px;
+
+    background:#ffd800;
+    color:#000;
+
+    border:none;
+    border-radius:6px;
+
+    font-size:17px;
+    font-weight:bold;
+
+    cursor:pointer;
+    transition:.3s;
+}
+
+.home-btn:hover{
+    background:#ffca00;
+    transform:translateY(-3px);
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.hero{
+
+height:220px;
+
+border-bottom-right-radius:100px;
+
+}
+
+.thank-title{
+
+font-size:42px;
+
+}
+
+.content{
+
+padding:40px 18px;
+
+}
+
+.content h2{
+
+font-size:23px;
+
+line-height:1.5;
+
+}
+
+.msg,
+.thanks{
+
+font-size:18px;
+
+margin-top:30px;
+
+}
+
+.team{
+
+font-size:26px;
+
+margin-top:15px;
+
+}
+
+.home-btn{
+
+width:100%;
+
+padding:15px;
+
+font-size:16px;
+
+}
+
+}
