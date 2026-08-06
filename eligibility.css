@@ -9,7 +9,7 @@
   --green-dark: #1d6f3a;
   --green: #19753f;
   --green-light: #e6ffe6;
-  --yellow: #ffe600;
+  --yellow: #f0d400;
   --yellow-dark: #f0d400;
   --text-muted: #5a5a5a;
   --border: #d8ead9;
@@ -160,7 +160,7 @@ body {
 }
 
 .step-title {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--green-dark);
   margin-bottom: 22px;
@@ -169,7 +169,7 @@ body {
 
 .field-label {
   display: block;
-  font-size: 15px;
+  font-size: 14px;
   color: var(--green);
   margin-bottom: 8px;
 }
@@ -177,11 +177,11 @@ body {
 .field-input {
   width: 100%;
   padding: 14px 16px;
-  font-size: 16px;
+  font-size: 14px;
   border: 1.5px solid var(--yellow-dark);
   border-radius: 8px;
   outline: none;
-  color: #222;
+  color: #222222;
   background: #fff;
   transition: border-color .2s, box-shadow .2s;
 }
@@ -206,7 +206,7 @@ body {
   display: block;
 }
 
-.reassurance {
+.reassurance { 
   margin-top: 24px;
   font-size: 14px;
   color: var(--text-muted);
@@ -343,7 +343,7 @@ body {
 }
 
 .radio-label {
-  font-size: 15px;
+  font-size: 12px;
   color: #333;
 }
 
@@ -436,7 +436,7 @@ body {
 }
 
 .checkbox-label {
-  font-size: 15px;
+  font-size: 12px;
   color: #333;
 }
 
@@ -568,4 +568,20 @@ body {
 }
 
 
+#step-social .option{
+    display:block;
+    margin:12px 0;
+    padding:15px;
+    border:2px solid #ddd;
+    border-radius:12px;
+    cursor:pointer;
+    transition:0.3s;
+}
 
+#step-social .option:hover{
+    border-color:#27ae60;
+}
+
+#step-social input[type="checkbox"]{
+    margin-right:10px;
+}
