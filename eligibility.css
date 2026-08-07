@@ -53,10 +53,7 @@ body {
   position: relative;
 }
 
-/* Decorative corner curve.
-   Fixed to the viewport (not the document) and sized as a
-   percentage of the viewport so it never overwhelms small
-   screens, however tall the page content grows. */
+
 .corner-shape {
   position: fixed;
   bottom: 0;
@@ -82,14 +79,10 @@ body {
   align-items: center;
 }
 
-/* For steps with many bubble options let the card grow wider
-   so options can flow across the row like the reference design. */
 .page:has(#step-4.active),
 .page:has(#step-5c.active) {
   max-width: 900px;
 }
-
-/* Logo */
 
 .logo-wrap {
   margin-bottom: 28px;
@@ -121,7 +114,7 @@ body {
   color: var(--green);
 }
 
-/* Card */
+
 
 .card {
   width: 100%;
@@ -212,7 +205,6 @@ body {
   color: var(--text-muted);
 }
 
-/* Buttons */
 
 .next-btn {
   margin-top: 24px;
@@ -282,7 +274,6 @@ body {
   border-color: var(--green);
 }
 
-/* Radio group (single-select) */
 
 .radio-group {
   display: flex;
@@ -354,7 +345,7 @@ body {
   }
 }
 
-/* Info / explainer text blocks (e.g. gas supply Yes/No meaning) */
+
 
 .info-block {
   font-size: 14.5px;
@@ -367,9 +358,6 @@ body {
   color: var(--green-dark);
 }
 
-/* Checkbox group (multi-select) - e.g. "home improvements" step.
-   Same visual language as radio-group but square boxes + check mark,
-   and the user can tap/touch as many bubbles as they like. */
 
 .checkbox-group {
   display: flex;
@@ -447,7 +435,6 @@ body {
   }
 }
 
-/* Autocomplete address dropdown */
 
 .autocomplete {
   position: relative;
@@ -515,14 +502,12 @@ body {
   margin-right: auto;
 }
 
-/* Respect users who prefer less motion */
 @media (prefers-reduced-motion: reduce) {
   .step.active {
     animation: none;
   }
 }
 
-/* Responsive: small phones */
 @media (max-width: 480px) {
   .card {
     padding: 28px 22px;
@@ -551,7 +536,7 @@ body {
   }
 }
 
-/* Larger desktop breathing room */
+
 @media (min-width: 1200px) {
   .page {
     max-width: 500px;
