@@ -38,7 +38,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
   <div class="card" id="card">
 
-    <!-- Step 1: Postcode -->
+    
     <div class="step active" id="step-1" data-step="1">
 
       <div class="secure-row">
@@ -70,7 +70,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
     </div>
 
-    <!-- Step 2a: Address found - pick from list -->
+    
     <div class="step" id="step-2a" data-step="2a">
 
       <h1 class="step-title">Select your address</h1>
@@ -106,7 +106,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
     </div>
 
-    <!-- Step 2b: Address not found - manual entry -->
+   
     <div class="step" id="step-2b" data-step="2b">
 
       <h1 class="step-title">Simply enter your house name/number and street</h1>
@@ -134,7 +134,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
     </div>
 
-    <!-- Step 3: Property type -->
+    
     <div class="step" id="step-3" data-step="3">
 
       <h1 class="step-title">Please confirm the type of property that you live in?</h1>
@@ -185,7 +185,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
     </div>
 
-    <!-- Step 4: Home improvements (multi-select checkboxes) -->
+    
     <div class="step" id="step-4" data-step="4">
 
       <h1 class="step-title">Have any of the following improvements been made to your home in the last 12 months?</h1>
@@ -308,7 +308,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
     </div>
 
-    <!-- Step 5: Homeowner or renter -->
+   
     <div class="step" id="step-5" data-step="5">
 
       <h1 class="step-title">Are you a homeowner or renter?</h1>
@@ -344,7 +344,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
     </div>
 
-    <!-- Step 5-social: Property issues (shown instead of Gas Supply when Social Housing is selected) -->
+    
     <div class="step" id="step-social" data-step="5s">
 
       <h1 class="step-title">Is your property affected by any of the following?</h1>
@@ -380,6 +380,11 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
           <span class="checkbox-box"></span>
           <span class="checkbox-label">Poor insulation</span>
         </label>
+        <label class="checkbox-option">
+          <input type="checkbox" name="property-issue" value="None">
+          <span class="checkbox-box"></span>
+          <span class="checkbox-label">None</span>
+        </label>
       </div>
 
       <p class="field-error" id="social-error">Please select at least one option.</p>
@@ -397,7 +402,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
     </div>
 
-    <!-- Step 5b: Gas supply (shown when Homeowner or Private Renter is selected) -->
+    
     <div class="step" id="step-5b" data-step="5b">
 
       <h1 class="step-title">Does your property have a gas supply?</h1>
@@ -433,7 +438,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
     </div>
 
-    <!-- Step 5c: Income band -->
+   
     <div class="step" id="step-5c" data-step="5c">
 
       <h1 class="step-title">Which income band does your household fall into?</h1>
@@ -474,7 +479,6 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
     </div>
 
-    <!-- Step 6: Outstanding credit commitments -->
     <div class="step" id="step-6" data-step="6">
 
         <h1 class="step-title">Do you currently have any of the following outstanding credit commitments?</h1>
@@ -561,13 +565,12 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
     </div>
 
-    <!-- Step 6b: Outstanding balance amount (shown only if the user selected a real
-         credit commitment in Step 6, i.e. not "None") -->
+
     <div class="step" id="step-6b" data-step="6b">
 
-        <h1 class="step-title">Which of the following best describes your total outstanding balance?</h1>
+        <h1 class="step-title">Which of the following best describes your total outstanding debt balance?</h1>
 
-        <div class="radio-group" id="debt-amount-group" role="radiogroup" aria-label="Total outstanding balance">
+        <div class="radio-group" id="debt-amount-group" role="radiogroup" aria-label="Total outstanding debt balance">
 
             <label class="radio-option">
                 <input type="radio" name="debt-amount" value="Under £2,000">
@@ -629,7 +632,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
     </div>
 
-    <!-- Step 7: Contact details -->
+    
     <div class="step" id="step-7" data-step="7">
 
         <h1 class="step-title"></h1>
@@ -679,7 +682,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
     </div>
 
-    <!-- Step 9 -->
+    
     <div class="step" id="step-9" data-step="9">
 
         <h1 class="step-title">When's best to call you?</h1>
@@ -689,7 +692,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
             However, we will do our very best to call you at a time or day
             that is convenient for you.
             <br><br>
-            <strong>Our opening times are: Mon-Fri 9am-5pm.</strong>
+            <strong>Our opening times are: Mon-Fri 9am-7pm.</strong>
         </p>
 
         <label class="field-label" for="call-time">
@@ -756,7 +759,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
     </div>
 
-    <!-- Step 6 placeholder -->
+    
     <div class="step" id="step-1o" data-step="10">
       <p class="step-title" style="font-size:20px;">Step 9 goes here…</p>
       <div class="btn-row">
