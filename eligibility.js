@@ -1,26 +1,8 @@
-// eligibility.js
-// Step 1: postcode entry + validation (UK only, checked against postcodes.io).
-// Step 2a: (unused - kept for compatibility) address autocomplete.
-// Step 2b: manual house name/number + street entry.
-// Step 3: property type (single-select).
-// Step 4: home improvements (multi-select checkboxes).
-// Step 5: homeowner or renter (single-select).
-// Step 5-social: property issues (shown instead of gas supply for Social Housing).
-// Step 5b: gas supply (single-select Yes/No) - shown for Homeowner/Private Renter.
-// Step 5c: benefits (single-select bubbles, not a dropdown).
-// Step 6: outstanding credit commitments (multi-select checkboxes).
-// Step 6b: outstanding balance amount (shown only if user has real debt, i.e. not "None").
-
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ---------------------------------------------------------------
-  // Config: backend endpoint (change this to your real API URL)
-  // ---------------------------------------------------------------
+ 
   const SUBMIT_ENDPOINT = 'http://localhost:5000/api/users/submit';
 
-  // ---------------------------------------------------------------
-  // Address lookup via getAddress.io (free tier available).
-  // ---------------------------------------------------------------
   function normalizePostcode(value) {
     return value.trim().toUpperCase().replace(/\s+/g, '');
   }
@@ -158,12 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // ---------------------------------------------------------------
-  // Step navigation
-  // ---------------------------------------------------------------
-  // FIX: previously this object had a duplicate 'step-6' key, which
-  // silently overwrote the real step-6 element with step-6b. Every
-  // key now maps to a unique step id/element.
+ 
   const stepEls = {
     'step-1': document.getElementById('step-1'),
     'step-2a': document.getElementById('step-2a'),
@@ -207,9 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', goBack);
   });
 
-  // ---------------------------------------------------------------
-  // Step 1: postcode (UK only)
-  // ---------------------------------------------------------------
+
   const postcodeInput = document.getElementById('postcode');
   const postcodeError = document.getElementById('postcode-error');
   const postcodeNext = document.getElementById('postcode-next');
@@ -284,10 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   });
 
-  // ---------------------------------------------------------------
-  // Step 2a: address autocomplete (currently unused in the flow -
-  // postcode goes straight to step-2b - kept for future use)
-  // ---------------------------------------------------------------
+
   const addressInput = document.getElementById('address-search');
   const addressListbox = document.getElementById('address-listbox');
   const addressError = document.getElementById('address-error');
@@ -407,9 +379,7 @@ document.addEventListener('DOMContentLoaded', () => {
     showStep('step-3');
   });
 
-  // ---------------------------------------------------------------
-  // Step 2b: manual address entry
-  // ---------------------------------------------------------------
+
   const manualInput = document.getElementById('manual-address');
   const manualError = document.getElementById('manual-error');
   const manualNext = document.getElementById('manual-next');
@@ -438,9 +408,6 @@ document.addEventListener('DOMContentLoaded', () => {
     showStep('step-3');
   });
 
-  // ---------------------------------------------------------------
-  // Step 3: property type (single-select)
-  // ---------------------------------------------------------------
   const propertyTypeInputs = document.querySelectorAll('input[name="property-type"]');
   const propertyTypeNext = document.getElementById('property-type-next');
 
@@ -456,9 +423,6 @@ document.addEventListener('DOMContentLoaded', () => {
     showStep('step-4');
   });
 
-  // ---------------------------------------------------------------
-  // Step 4: home improvements (multi-select checkboxes)
-  // ---------------------------------------------------------------
   const improvementInputs = document.querySelectorAll('input[name="improvements"]');
   const improvementsNext = document.getElementById('improvements-next');
   const improvementsError = document.getElementById('improvements-error');
@@ -499,9 +463,7 @@ document.addEventListener('DOMContentLoaded', () => {
     showStep('step-5');
   });
 
-  // ---------------------------------------------------------------
-  // Step 5: homeowner or renter (single-select)
-  // ---------------------------------------------------------------
+ 
   const occupancyInputs = document.querySelectorAll('input[name="occupancy"]');
   const occupancyNext = document.getElementById('occupancy-next');
 
@@ -517,7 +479,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!selected) return;
 
-    // Homeowner & Private Renter -> Gas Supply
     if (
       selected.value === 'Homeowner' ||
       selected.value === 'Private Renter'
@@ -525,18 +486,14 @@ document.addEventListener('DOMContentLoaded', () => {
       showStep('step-5b');
     }
 
-    // Social Housing -> Property Issues
+    
     else if (selected.value === 'Social Housing') {
       showStep('step-social');
     }
 
   });
 
-  // ---------------------------------------------------------------
-  // Step 5-social: property issues (shown instead of Step 5b for
-  // Social Housing). Multi-select, at least one required, then
-  // continues on to Step 5c (benefits) same as the gas supply step.
-  // ---------------------------------------------------------------
+ 
   const propertyIssueInputs = document.querySelectorAll('input[name="property-issue"]');
   const socialNext = document.getElementById('social-next');
   const socialError = document.getElementById('social-error');
@@ -562,9 +519,7 @@ document.addEventListener('DOMContentLoaded', () => {
     showStep('step-5c');
   });
 
-  // ---------------------------------------------------------------
-  // Step 5b: gas supply (single-select Yes/No)
-  // ---------------------------------------------------------------
+  
   const gasInputs = document.querySelectorAll('input[name="gas-supply"]');
   const gasNext = document.getElementById('gas-next');
 
@@ -580,9 +535,7 @@ document.addEventListener('DOMContentLoaded', () => {
     showStep('step-5c');
   });
 
-  // ---------------------------------------------------------------
-  // Step 5c: benefits (click-to-select bubbles, single-select)
-  // ---------------------------------------------------------------
+  
   const benefitsInputs = document.querySelectorAll('input[name="benefits"]');
   const benefitsNext = document.getElementById('benefits-next');
 
@@ -598,16 +551,7 @@ document.addEventListener('DOMContentLoaded', () => {
     showStep('step-6');
   });
 
-  // ---------------------------------------------------------------
-  // Step 6: outstanding credit commitments (multi-select checkboxes)
-  // "None" is mutually exclusive with every other option.
-  //
-  // FIX: this step now branches correctly:
-  //  - if the user picked "None" (or nothing else), skip straight
-  //    to Step 7 (contact details) - there's no balance to ask about.
-  //  - if the user picked one or more real debts, go to Step 6b to
-  //    ask for the total outstanding balance.
-  // ---------------------------------------------------------------
+  
   const debtInputs = document.querySelectorAll('input[name="debt"]');
   const debtNext = document.getElementById('debt-next');
   const debtError = document.getElementById('debt-error');
@@ -653,9 +597,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const onlyNoneSelected = selectedDebts.length === 1 && selectedDebts[0] === 'None';
 
     if (onlyNoneSelected) {
-      // Clear any previously chosen debt amount so it never gets
-      // submitted alongside "None" (can happen if the user went
-      // forward, picked an amount, then came back and switched to None).
+      
       debtAmountInputs.forEach((el) => { el.checked = false; });
       debtAmountNext.disabled = true;
     }
@@ -664,10 +606,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   });
 
-  // ---------------------------------------------------------------
-  // Step 6b: outstanding balance amount (single-select)
-  // Only reached when the user has real debt commitments.
-  // ---------------------------------------------------------------
+ 
   const debtAmountInputs = document.querySelectorAll('input[name="debt-amount"]');
   const debtAmountNext = document.getElementById('debt-amount-next');
 
@@ -683,9 +622,6 @@ document.addEventListener('DOMContentLoaded', () => {
     showStep('step-7');
   });
 
-  // ---------------------------------------------------------------
-  // Step 7: contact details
-  // ---------------------------------------------------------------
   const title = document.getElementById('title');
   const first = document.getElementById('firstname');
   const last = document.getElementById('lastname');
@@ -719,9 +655,7 @@ document.addEventListener('DOMContentLoaded', () => {
     showStep('step-9');
   });
 
-  // ---------------------------------------------------------------
-  // Step 9: call time, gift, privacy + submit
-  // ---------------------------------------------------------------
+
   const callTime = document.getElementById('call-time');
   const gift = document.getElementById('gift');
   const privacy = document.getElementById('privacy-check');
@@ -735,6 +669,7 @@ document.addEventListener('DOMContentLoaded', () => {
     );
   }
 
+  
   callTime.addEventListener('input', checkStep9);
   gift.addEventListener('change', checkStep9);
   privacy.addEventListener('change', checkStep9);
@@ -775,9 +710,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       debt: selectedDebtValues,
 
-      // Safety net: only ever send a debt amount when the user actually
-      // has real debt commitments (not "None" and not empty), even if a
-      // stale radio selection is still sitting in the DOM.
+  
       debtAmount: hasRealDebt
         ? (document.querySelector('input[name="debt-amount"]:checked')?.value || null)
         : null,
