@@ -493,16 +493,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
   });
 
- 
-  const propertyIssueInputs = document.querySelectorAll('input[name="property-issue"]');
+ const propertyIssueInputs = document.querySelectorAll('input[name="property-issue"]');
   const socialNext = document.getElementById('social-next');
   const socialError = document.getElementById('social-error');
+  const propertyIssueExclusiveIds = ['property-issue-none'];
+
+  function updateSocialNextState() {
+    const anyChecked = Array.from(propertyIssueInputs).some((el) => el.checked);
+    socialNext.disabled = !anyChecked;
+    if (anyChecked) socialError.classList.remove('show');
+  }
 
   propertyIssueInputs.forEach((input) => {
     input.addEventListener('change', () => {
-      const anyChecked = Array.from(propertyIssueInputs).some((el) => el.checked);
-      socialNext.disabled = !anyChecked;
-      if (anyChecked) socialError.classList.remove('show');
+      if (propertyIssueExclusiveIds.includes(input.id) && input.checked) {
+        // Selecting "None" clears every other box
+        propertyIssueInputs.forEach((other) => {
+          if (other !== input) other.checked = false;
+        });
+      } else if (input.checked) {
+        // Selecting any real issue clears "None"
+        propertyIssueExclusiveIds.forEach((id) => {
+          const el = document.getElementById(id);
+          if (el) el.checked = false;
+        });
+      }
+      updateSocialNextState();
     });
   });
 
