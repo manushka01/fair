@@ -308,3 +308,10 @@ body{
         display: none !important;
     }
 }
+
+/* Hide Free Expert Advice button on mobile */
+@media (max-width: 768px) {
+    .call-btn {
+        display: none !important;
+    }
+}
