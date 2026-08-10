@@ -204,3 +204,100 @@ body{
         padding: 20px !important;
     }
 }
+
+
+/* ================= MOBILE HEADER FIX ================= */
+
+@media (max-width: 768px) {
+
+    /* Social media icons hide on mobile */
+    .right-info {
+        display: none !important;
+    }
+
+    /* Top bar sirf phone number rakhe */
+    .top-flex {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 8px 18px;
+    }
+
+    .left-info {
+        display: flex;
+        align-items: center;
+        gap: 0;
+    }
+
+    /* Email hide */
+    .left-info span:nth-child(2) {
+        display: none !important;
+    }
+
+    /* Phone number */
+    .left-info span:first-child {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 15px;
+        white-space: nowrap;
+    }
+
+    /* Phone icon */
+    .left-info span:first-child i {
+        font-size: 17px;
+        line-height: 1;
+        width: 20px;
+        text-align: center;
+    }
+
+    /* Free Expert Advice button */
+    .call-btn {
+        width: 100%;
+        min-height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        font-size: 18px;
+        padding: 16px 20px;
+        border-radius: 14px;
+    }
+
+    /* Call icon inside button */
+    .call-btn i {
+        font-size: 21px;
+        line-height: 1;
+        flex-shrink: 0;
+    }
+}
+
+
+/* ================= SMALL PHONE FIX ================= */
+
+@media (max-width: 480px) {
+
+    .top-flex {
+        padding: 7px 14px;
+    }
+
+    .left-info span:first-child {
+        font-size: 14px;
+    }
+
+    .left-info span:first-child i {
+        font-size: 16px;
+    }
+
+    .call-btn {
+        min-height: 58px;
+        font-size: 17px;
+        border-radius: 13px;
+        gap: 9px;
+    }
+
+    .call-btn i {
+        font-size: 19px;
+    }
+}
