@@ -301,3 +301,10 @@ body{
         font-size: 19px;
     }
 }
+
+/* Hide phone number/top contact bar on mobile */
+@media (max-width: 768px) {
+    .top-flex {
+        display: none !important;
+    }
+}
