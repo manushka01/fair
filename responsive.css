@@ -13,6 +13,8 @@ img, svg{
 
 * {
     -webkit-text-size-adjust: 100%;
+      font-family: Georgia,Helvetica, serif;
+
 }
 
 html{
@@ -79,6 +81,7 @@ body{
     .logo img{
         height: 38px;
     }
+    
 
     .mobile-nav-toggle{
         display: block !important;
@@ -308,7 +311,6 @@ body{
         display: none !important;
     }
 }
-
 /* Hide Free Expert Advice button on mobile */
 @media (max-width: 768px) {
     .call-btn {
