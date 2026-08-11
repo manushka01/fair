@@ -81,7 +81,11 @@ header{
 .logo img{
   height: 44px;
 }
-
+.tagline{
+  font-size: 12px;
+  color: var(--mid-green);
+  font-weight:500;
+}
 .mobile-nav-toggle{
   display:none;
   background:none;
