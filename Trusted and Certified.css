@@ -104,31 +104,46 @@ nav ul{
   font-weight:500;
   font-size: 15px;
 }
-
 /* Dropdown toggle buttons */
 .has-dropdown{
   position: relative;
 }
+
+/* Invisible bridge so dropdown doesn't close while moving cursor */
+.has-dropdown::after{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 15px;
+  background: transparent;
+  z-index: 999;
+}
+
 .dropdown-toggle{
-  background:none;
-  border:none;
+  background: none;
+  border: none;
   font: inherit;
-  font-weight:500;
+  font-weight: 500;
   color: var(--text-dark);
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
   gap: 6px;
-  cursor:pointer;
+  cursor: pointer;
   padding: 6px 0;
 }
+
 .arrow{
   font-size: 11px;
   transition: transform 0.2s ease;
 }
 
+
+/* Dropdown menu */
 .dropdown-menu{
-  display:none;
-  position:absolute;
+  display: none;
+  position: absolute;
   top: calc(100% + 12px);
   left: 0;
   background: var(--white);
@@ -136,42 +151,53 @@ nav ul{
   border-radius: 10px;
   box-shadow: 0 14px 32px rgba(15,61,36,0.15);
   padding: 10px 0;
+  z-index: 1000;
 }
+
 .dropdown-menu li a{
-  display:block;
+  display: block;
   padding: 10px 18px;
   font-size: 14px;
   color: var(--text-dark);
-  font-weight:400;
+  font-weight: 400;
 }
+
 .dropdown-menu li a:hover{
   background: var(--light-green);
   color: var(--mid-green);
 }
 
-.has-dropdown.open .dropdown-menu{
-  display:block;
+
+/* ===============================
+   HOVER DROPDOWN
+   =============================== */
+
+.has-dropdown:hover .dropdown-menu{
+  display: block;
 }
-.has-dropdown.open .arrow{
+
+.has-dropdown:hover .arrow{
   transform: rotate(180deg);
 }
 
+
+/* Call button */
 .call-btn{
   background: var(--yellow);
   color: var(--text-dark);
-  font-weight:600;
+  font-weight: 600;
   font-size: 14px;
   padding: 12px 22px;
   border-radius: 8px;
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
   gap: 8px;
-  white-space:nowrap;
-}
-.call-btn:hover{
-  background:#e6c400;
+  white-space: nowrap;
 }
 
+.call-btn:hover{
+  background: #e6c400;
+}
 /* ================ HERO ================ */
 .hero{
   background: var(--light-green);
@@ -408,101 +434,204 @@ nav ul{
 
 
 
+/* =========================================================
+   FOOTER
+========================================================= */
 
-
-/* ================ FOOTER ================ */
-.site-footer{
+.site-footer {
   background: var(--light-green);
 }
 
-.footer-top{
-  display:grid;
+/* ---------- FOOTER TOP ---------- */
+
+.footer-top {
+  display: grid;
   grid-template-columns: 1.4fr 1fr 1fr;
   gap: 40px;
   padding: 60px 24px 40px;
 }
 
-.footer-brand .footer-logo{
+/* ---------- FOOTER BRAND ---------- */
+
+.footer-brand .footer-logo {
   height: 40px;
+  width: auto;
   margin-bottom: 14px;
 }
-.footer-brand .tagline{
+
+.footer-brand .tagline {
   color: var(--mid-green);
   margin-bottom: 20px;
 }
 
-.footer-col h3{
+/* ---------- FREE EXPERT ADVICE ---------- */
+/* Desktop par button content ke according rahega */
+
+.footer-brand a {
+  display: inline-flex !important;
+  width: fit-content !important;
+  max-width: max-content !important;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- FOOTER COLUMNS ---------- */
+
+.footer-col h3 {
   color: var(--dark-green);
   font-size: 20px;
   margin-bottom: 16px;
 }
-.footer-col ul li{
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col ul li {
   margin-bottom: 12px;
 }
-.footer-col ul li a{
+
+.footer-col ul li a {
   color: var(--dark-green);
   font-weight: 500;
+  text-decoration: none;
 }
-.footer-col ul li a:hover{
+
+.footer-col ul li a:hover {
   color: var(--mid-green);
 }
 
-.footer-partners{
+/* ---------- PARTNERS ---------- */
+
+.footer-partners {
   background: var(--white);
   padding: 40px 24px;
-  text-align:center;
+  text-align: center;
 }
-.footer-partners h3{
+
+.footer-partners h3 {
   color: var(--mid-green);
   font-size: 22px;
   margin-bottom: 24px;
 }
-.footer-partners h3:not(:first-child){
+
+.footer-partners h3:not(:first-child) {
   margin-top: 40px;
 }
-.logo-row{
-  display:flex;
-  justify-content:center;
-  align-items:center;
+
+.logo-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   gap: 40px;
 }
-.logo-row img{
+
+.logo-row img {
   max-height: 45px;
-  width:auto;
+  width: auto;
 }
 
-.footer-bottom{
+/* ---------- FOOTER BOTTOM ---------- */
+
+.footer-bottom {
   background: var(--dark-green);
   color: var(--white);
   padding: 20px 24px;
 }
-.footer-bottom .container{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:wrap;
+
+.footer-bottom .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
   gap: 10px;
 }
-.footer-social{
-  display:flex;
+
+.footer-social {
+  display: flex;
   gap: 16px;
 }
 
-.footer-disclaimer{
+.footer-social a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+/* ---------- DISCLAIMER ---------- */
+
+.footer-disclaimer {
   background: var(--mid-green);
   color: var(--white);
   font-size: 13px;
-  line-height:1.6;
+  line-height: 1.6;
   padding: 18px 24px;
 }
 
-@media (max-width: 900px){
-  .footer-top{
-    grid-template-columns: 1fr;
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
   }
-  .footer-bottom .container{
+
+  .footer-bottom .container {
     flex-direction: column;
     align-items: flex-start;
   }
+
+}
+
+
+/* =========================================================
+   MOBILE / PHONE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .footer-top {
+    grid-template-columns: 1fr;
+    padding: 40px 20px 30px;
+    gap: 30px;
+  }
+
+  /* Free Expert Advice mobile par hide */
+  .footer-brand a {
+    display: none !important;
+  }
+
+  .footer-brand .footer-logo {
+    height: 40px;
+  }
+
+  .footer-col h3 {
+    font-size: 19px;
+  }
+
+  .footer-bottom {
+    padding: 18px 20px;
+  }
+
+  .footer-bottom .container {
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-social {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .footer-disclaimer {
+    padding: 16px 20px;
+    font-size: 12px;
+    text-align: center;
+  }
+
 }
